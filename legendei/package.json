@@ -1,5 +1,6 @@
 {
   "name": "legendei",
+  "title": "Legendei - Cançando palavras nas legendas",
   "version": "0.1.0",
   "private": true,
   "scripts": {
