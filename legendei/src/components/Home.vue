@@ -27,12 +27,19 @@ export default{
     },
     methods:{
         processSubtitles(){
-            //ipc é a forma padrão de comunicação com o backend do electron 
-            const paths = this.files.map(f => f.path)
-            ipcRenderer.send('process-subtitles', paths)
-            ipcRenderer.on('process-subtitles', (event, resp)=>{
-                this.groupedWords = resp
-            })
+            if(this.files != null && this.files != '')
+            {
+                const paths = this.files.map(f => f.path)
+
+                //ipc é a forma padrão de comunicação com o backend do electron 
+                ipcRenderer.send('process-subtitles', paths)
+                ipcRenderer.on('process-subtitles', (event, resp)=>{
+                    this.groupedWords = resp
+                })
+            }
+            else
+                alert('Selecione algum arquivo!')
+
         }
     }
 }
